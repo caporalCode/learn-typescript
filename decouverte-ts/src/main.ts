@@ -1,22 +1,12 @@
-import  {Hobbit}  from "./hobbit";
-import { Nourriture } from "./nourriture";
-import {Orc} from './orc'
-import {Arme, afficherPuissance, AvecPuissance} from "./arme"
+import { Hobbit } from "./hobbit";
+import { Orc } from "./orc";
+import { Evil } from "./evil";
+import { Player } from "./player";
 
-const hobbit = new Hobbit();
-hobbit.manger({pointsDeVie: 10})
-hobbit.manger({ pointsDeVie: 20})
-let orc = new Orc()
+// const hobbit = new Hobbit('Rivaland');
+// hobbit.manger({ pointsDeVie: 10 });
+// hobbit.manger({ pointsDeVie: 20 });
 
+// let orc = new Orc("Almator", 'TRES_TRES_MECHANT');
 
-const arme = new Arme()
-
-const arc: AvecPuissance = {
-    puissance: 10
-}
-
-
-
-afficherPuissance(arme)
-afficherPuissance(arc)
-afficherPuissance({puissance: 56})
+const player = new Player(prompt("Quel est le votre prénom?"));

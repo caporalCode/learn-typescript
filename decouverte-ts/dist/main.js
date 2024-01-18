@@ -10,13 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/arme.ts":
-/*!*********************!*\
-  !*** ./src/arme.ts ***!
-  \*********************/
+/***/ "./src/character.ts":
+/*!**************************!*\
+  !*** ./src/character.ts ***!
+  \**************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.afficherPuissance = exports.Arme = void 0;\nclass Arme {\n    constructor() {\n        this.puissance = 10;\n        this.bouclier = 0;\n    }\n}\nexports.Arme = Arme;\n/**\n * Prints the power of a given weapon.\n *\n * @param {object} arme - The weapon object.\n * @param {number} arme.puissance - The power of the weapon.\n */\nfunction afficherPuissance(arme) {\n    console.log(`Puissance : ${arme.puissance}`);\n}\nexports.afficherPuissance = afficherPuissance;\n\n\n//# sourceURL=webpack://decouverte-ts/./src/arme.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Character = void 0;\nclass Character {\n    constructor(_name) {\n        this._name = _name;\n    }\n    get name() {\n        return this._name;\n    }\n    set name(name) {\n        if (!name) {\n            throw new Error(\"Le nom est obligatoire\");\n        }\n        this._name = name;\n    }\n}\nexports.Character = Character;\n\n\n//# sourceURL=webpack://decouverte-ts/./src/character.ts?");
+
+/***/ }),
+
+/***/ "./src/enemy.ts":
+/*!**********************!*\
+  !*** ./src/enemy.ts ***!
+  \**********************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Enemy = void 0;\nconst character_1 = __webpack_require__(/*! ./character */ \"./src/character.ts\");\nclass Enemy extends character_1.Character {\n    constructor(name, evilLevel = 'MECHANT') {\n        super(name);\n        this.evilLevel = evilLevel;\n    }\n}\nexports.Enemy = Enemy;\n\n\n//# sourceURL=webpack://decouverte-ts/./src/enemy.ts?");
 
 /***/ }),
 
@@ -24,9 +34,9 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 /*!***********************!*\
   !*** ./src/hobbit.ts ***!
   \***********************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Hobbit = void 0;\nclass Hobbit {\n    manger(nourriture) {\n        console.log(\"Miam Miam! \", nourriture.pointsDeVie, \"points de vie!\");\n    }\n}\nexports.Hobbit = Hobbit;\nclass Test {\n}\n\n\n//# sourceURL=webpack://decouverte-ts/./src/hobbit.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Hobbit = void 0;\nconst character_1 = __webpack_require__(/*! ./character */ \"./src/character.ts\");\nclass Hobbit extends character_1.Character {\n    manger(nourriture) {\n        console.log(\"Miam Miam! \", nourriture.pointsDeVie, \"points de vie!\");\n    }\n}\nexports.Hobbit = Hobbit;\nclass Test {\n}\n\n\n//# sourceURL=webpack://decouverte-ts/./src/hobbit.ts?");
 
 /***/ }),
 
@@ -36,7 +46,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
   \*********************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst hobbit_1 = __webpack_require__(/*! ./hobbit */ \"./src/hobbit.ts\");\nconst orc_1 = __webpack_require__(/*! ./orc */ \"./src/orc.ts\");\nconst arme_1 = __webpack_require__(/*! ./arme */ \"./src/arme.ts\");\nconst hobbit = new hobbit_1.Hobbit();\nhobbit.manger({ pointsDeVie: 10 });\nhobbit.manger({ pointsDeVie: 20 });\nlet orc = new orc_1.Orc();\nconst arme = new arme_1.Arme();\nconst arc = {\n    puissance: 10\n};\n(0, arme_1.afficherPuissance)(arme);\n(0, arme_1.afficherPuissance)(arc);\n(0, arme_1.afficherPuissance)({ puissance: 56 });\n\n\n//# sourceURL=webpack://decouverte-ts/./src/main.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst hobbit_1 = __webpack_require__(/*! ./hobbit */ \"./src/hobbit.ts\");\nconst orc_1 = __webpack_require__(/*! ./orc */ \"./src/orc.ts\");\nconst hobbit = new hobbit_1.Hobbit('Rivaland');\nhobbit.manger({ pointsDeVie: 10 });\nhobbit.manger({ pointsDeVie: 20 });\nlet orc = new orc_1.Orc(\"Almator\", 'TRES_TRES_MECHANT');\n\n\n//# sourceURL=webpack://decouverte-ts/./src/main.ts?");
 
 /***/ }),
 
@@ -44,9 +54,9 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\ncons
 /*!********************!*\
   !*** ./src/orc.ts ***!
   \********************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Orc = void 0;\nclass Orc {\n    manger() {\n        console.log(\"scrupmmff!\");\n    }\n}\nexports.Orc = Orc;\n\n\n//# sourceURL=webpack://decouverte-ts/./src/orc.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Orc = void 0;\nconst enemy_1 = __webpack_require__(/*! ./enemy */ \"./src/enemy.ts\");\nclass Orc extends enemy_1.Enemy {\n    manger() {\n        console.log(\"scrupmmff!\");\n    }\n}\nexports.Orc = Orc;\n\n\n//# sourceURL=webpack://decouverte-ts/./src/orc.ts?");
 
 /***/ })
 

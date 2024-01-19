@@ -1,5 +1,7 @@
+import { StringDisplay } from "../core/custom-types";
+
 export abstract class Character {
-  constructor(private _name: string) {}
+  constructor(private _name: string, protected afficher: StringDisplay) {}
 
   get name(): string {
     return this._name;

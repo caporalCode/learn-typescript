@@ -1,4 +1,4 @@
-import { StringOrNull } from "./types";
+import { StringDisplay, StringOrNull, RequestString } from "../core/custom-types";
 
 export class Player {
   private _prenom !: string;

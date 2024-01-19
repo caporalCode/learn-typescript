@@ -10,33 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/character.ts":
-/*!**************************!*\
-  !*** ./src/character.ts ***!
-  \**************************/
+/***/ "./src/domains/game.ts":
+/*!*****************************!*\
+  !*** ./src/domains/game.ts ***!
+  \*****************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Character = void 0;\nclass Character {\n    constructor(_name) {\n        this._name = _name;\n    }\n    get name() {\n        return this._name;\n    }\n    set name(name) {\n        if (!name) {\n            throw new Error(\"Le nom est obligatoire\");\n        }\n        this._name = name;\n    }\n}\nexports.Character = Character;\n\n\n//# sourceURL=webpack://decouverte-ts/./src/character.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Game = void 0;\nclass Game {\n    constructor(_player, afficher, requestString) {\n        this._player = _player;\n        this.afficher = afficher;\n        this.requestString = requestString;\n    }\n    init() {\n        const nickNameCharacter = this.requestString(\"Quel est le nom de ton personnage?\");\n        if (nickNameCharacter) {\n            this.afficher(nickNameCharacter);\n        }\n    }\n    /**\n     * Start the function.\n     *\n     * @return {void} No return value.\n     */\n    start() {\n        this.afficher(`Bienvenue ${this.player.prenom}!`);\n    }\n    get player() {\n        return this._player;\n    }\n}\nexports.Game = Game;\n\n\n//# sourceURL=webpack://decouverte-ts/./src/domains/game.ts?");
 
 /***/ }),
 
-/***/ "./src/enemy.ts":
-/*!**********************!*\
-  !*** ./src/enemy.ts ***!
-  \**********************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ "./src/domains/player.ts":
+/*!*******************************!*\
+  !*** ./src/domains/player.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, exports) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Enemy = void 0;\nconst character_1 = __webpack_require__(/*! ./character */ \"./src/character.ts\");\nclass Enemy extends character_1.Character {\n    constructor(name, evilLevel = 'MECHANT') {\n        super(name);\n        this.evilLevel = evilLevel;\n    }\n}\nexports.Enemy = Enemy;\n\n\n//# sourceURL=webpack://decouverte-ts/./src/enemy.ts?");
-
-/***/ }),
-
-/***/ "./src/hobbit.ts":
-/*!***********************!*\
-  !*** ./src/hobbit.ts ***!
-  \***********************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Hobbit = void 0;\nconst character_1 = __webpack_require__(/*! ./character */ \"./src/character.ts\");\nclass Hobbit extends character_1.Character {\n    manger(nourriture) {\n        console.log(\"Miam Miam! \", nourriture.pointsDeVie, \"points de vie!\");\n    }\n}\nexports.Hobbit = Hobbit;\nclass Test {\n}\n\n\n//# sourceURL=webpack://decouverte-ts/./src/hobbit.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Player = void 0;\nclass Player {\n    constructor(prenom) {\n        this.prenom = prenom;\n    }\n    get prenom() {\n        return this._prenom;\n    }\n    set prenom(prenom) {\n        if (!prenom) {\n            throw new Error(\"Le prénom est obligatoire\");\n        }\n        this._prenom = prenom;\n    }\n}\nexports.Player = Player;\n\n\n//# sourceURL=webpack://decouverte-ts/./src/domains/player.ts?");
 
 /***/ }),
 
@@ -46,17 +36,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
   \*********************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst hobbit_1 = __webpack_require__(/*! ./hobbit */ \"./src/hobbit.ts\");\nconst orc_1 = __webpack_require__(/*! ./orc */ \"./src/orc.ts\");\nconst hobbit = new hobbit_1.Hobbit('Rivaland');\nhobbit.manger({ pointsDeVie: 10 });\nhobbit.manger({ pointsDeVie: 20 });\nlet orc = new orc_1.Orc(\"Almator\", 'TRES_TRES_MECHANT');\n\n\n//# sourceURL=webpack://decouverte-ts/./src/main.ts?");
-
-/***/ }),
-
-/***/ "./src/orc.ts":
-/*!********************!*\
-  !*** ./src/orc.ts ***!
-  \********************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Orc = void 0;\nconst enemy_1 = __webpack_require__(/*! ./enemy */ \"./src/enemy.ts\");\nclass Orc extends enemy_1.Enemy {\n    manger() {\n        console.log(\"scrupmmff!\");\n    }\n}\nexports.Orc = Orc;\n\n\n//# sourceURL=webpack://decouverte-ts/./src/orc.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst player_1 = __webpack_require__(/*! ./domains/player */ \"./src/domains/player.ts\");\nconst game_1 = __webpack_require__(/*! ./domains/game */ \"./src/domains/game.ts\");\nconst callBack = (mess) => console.log(mess);\nconst requestString = (mess) => prompt(mess);\n// const orc = new Orc(\"orrrk\", 'MECHANT', console.log)\n// orc.manger()\n// const enemies: Enemy[] = [\n//     new Orc(\"Almator\", 'TRES_TRES_MECHANT', callBack),\n//     new Orc(\"orrccc\", 'PAS_MECHANT', (mess: any) => {\n//         callBack(mess.toUpperCase())\n//     })\n// ]\nconst pseudo = requestString(\"Quel est le votre prénom?\");\nconst player = new player_1.Player(pseudo);\nconst game = new game_1.Game(player, callBack, requestString);\ngame.init();\n\n\n//# sourceURL=webpack://decouverte-ts/./src/main.ts?");
 
 /***/ })
 

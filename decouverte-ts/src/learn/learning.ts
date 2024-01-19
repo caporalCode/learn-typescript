@@ -1,6 +1,6 @@
-import { Nourriture } from "./nourriture";
-import { Orc } from "./orc";
-import { Arme, afficherPuissance, AvecPuissance } from "./arme";
+import { Nourriture } from "../domains/nourriture";
+import { Orc } from "../domains/orc";
+import { Arme, afficherPuissance, AvecPuissance } from "../domains/arme";
 
 let elfe: any = {
   nom: "Frieren",
